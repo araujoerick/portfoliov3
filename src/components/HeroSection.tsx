@@ -1,6 +1,5 @@
-"use client";
-
-import { ArrowUpRight, Download, Terminal } from "lucide-react";
+import { ArrowUpRight, Download } from "lucide-react";
+import CodeTerminal from "./CodeTerminal";
 
 const TechIcon = ({ name, color }: { name: string; color: string }) => (
   <div className="flex flex-col items-center gap-2">
@@ -97,123 +96,7 @@ const HeroSection = () => {
           </div>
 
           {/* Right Content - Code Preview */}
-          <div className="w-full">
-            <div className="relative group">
-              <div className="relative rounded-2xl overflow-hidden bg-linear-to-b from-neutral-900/60 via-neutral-900/40 to-neutral-900/30 border border-neutral-800/60 backdrop-blur-xl p-4 sm:p-6 hover:border-neutral-700/50 transition-all duration-500">
-                {/* Window Controls */}
-                <div className="flex items-center justify-between mb-4">
-                  <div className="flex items-center gap-2">
-                    <div className="flex gap-1.5">
-                      <div className="w-3 h-3 rounded-full bg-red-500/80" />
-                      <div className="w-3 h-3 rounded-full bg-yellow-500/80" />
-                      <div className="w-3 h-3 rounded-full bg-green-500/80" />
-                    </div>
-                    <span className="text-xs text-neutral-400 ml-2">
-                      techstack.ts
-                    </span>
-                  </div>
-                  <Terminal className="w-4 h-4 text-neutral-400" />
-                </div>
-
-                {/* Code Content */}
-                <div className="bg-neutral-900/95 rounded-lg p-3 sm:p-4 h-75 sm:h-87.5 lg:h-100 overflow-y-auto scrollbar-hide">
-                  <pre className="text-xs font-mono">
-                    <code
-                      style={{
-                        color: "rgb(248, 248, 242)",
-                        whiteSpace: "pre-wrap",
-                        wordBreak: "break-word",
-                      }}
-                    >
-                      <span style={{ color: "#6272a4" }}>
-                        {"// Construindo aplicações modernas"}
-                      </span>
-                      {"\n"}
-                      <span style={{ color: "#ff79c6" }}>
-                        class
-                      </span> TechStack {"{"}
-                      {"\n"}
-                      {"  "}
-                      <span style={{ color: "#ff79c6" }}>
-                        constructor
-                      </span>() {"{"}
-                      {"\n"}
-                      {"    "}
-                      <span style={{ color: "#ff79c6" }}>this</span>.
-                      <span style={{ color: "#8be9fd" }}>frontend</span> ={" "}
-                      <span style={{ color: "#bd93f9" }}>
-                        [
-                        <span style={{ color: "#f1fa8c" }}>
-                          &apos;React&apos;
-                        </span>
-                        ,{" "}
-                        <span style={{ color: "#f1fa8c" }}>
-                          &apos;Next.js&apos;
-                        </span>
-                        ,{" "}
-                        <span style={{ color: "#f1fa8c" }}>
-                          &apos;TypeScript&apos;
-                        </span>
-                        ,{" "}
-                        <span style={{ color: "#f1fa8c" }}>
-                          &apos;Tailwind&apos;
-                        </span>
-                        ]
-                      </span>
-                      ;{"\n"}
-                      {"    "}
-                      <span style={{ color: "#ff79c6" }}>this</span>.
-                      <span style={{ color: "#8be9fd" }}>backend</span> ={" "}
-                      <span style={{ color: "#bd93f9" }}>
-                        [
-                        <span style={{ color: "#f1fa8c" }}>
-                          &apos;NestJS&apos;
-                        </span>
-                        ,{" "}
-                        <span style={{ color: "#f1fa8c" }}>
-                          &apos;Node.js&apos;
-                        </span>
-                        ,{" "}
-                        <span style={{ color: "#f1fa8c" }}>
-                          &apos;RabbitMQ&apos;
-                        </span>
-                        ,{" "}
-                        <span style={{ color: "#f1fa8c" }}>
-                          &apos;PostgreSQL&apos;
-                        </span>
-                        ]
-                      </span>
-                      ;{"\n"}
-                      {"    "}
-                      <span style={{ color: "#ff79c6" }}>this</span>.
-                      <span style={{ color: "#8be9fd" }}>web3</span> = [&apos;
-                      <span
-                        style={{ color: "#ff79c6" }}
-                        className="animate-pulse"
-                      >
-                        |
-                      </span>
-                    </code>
-                  </pre>
-                </div>
-
-                {/* Footer */}
-                <div className="mt-4 flex items-center justify-between text-xs text-neutral-400">
-                  <span>TypeScript</span>
-                  <span className="flex items-center gap-2">
-                    <div className="w-2 h-2 bg-emerald-400 rounded-full animate-pulse" />
-                    <span className="hidden sm:inline">
-                      Full Stack Developer
-                    </span>
-                    <span className="sm:hidden">Dev Full Stack</span>
-                  </span>
-                </div>
-              </div>
-
-              {/* Glow Effect */}
-              <div className="absolute -inset-0.5 bg-linear-to-r from-emerald-500/20 to-teal-500/20 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-            </div>
-          </div>
+          <CodeTerminal />
         </div>
       </div>
 
