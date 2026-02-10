@@ -31,19 +31,15 @@ export const experiences = [
     achievements: [
       {
         text: "Dashboards e plataformas de Swap com integração blockchain (Ethers.js, Wagmi, SSE)",
-        span: false,
       },
       {
         text: "Arquitetura de Microserviços com NestJS e RabbitMQ para processamento assíncrono",
-        span: false,
       },
       {
         text: "Páginas institucionais com Performance e SEO - crescimento de 20% no tráfego orgânico",
-        span: false,
       },
       {
         text: "Implementação Pixel Perfect garantindo fidelidade aos protótipos de alta fidelidade",
-        span: true,
       },
     ],
   },
@@ -56,19 +52,15 @@ export const experiences = [
     achievements: [
       {
         text: "Interfaces responsivas com HTML, CSS e JavaScript priorizando acessibilidade",
-        span: false,
       },
       {
         text: "Redução de 20% no tempo de fechamento de chamados com automação de processos",
-        span: false,
       },
       {
         text: "Otimização de sistemas internos reduzindo erros críticos em 15%",
-        span: false,
       },
       {
         text: "Gestão de chamados com taxa de resolução de 90% dentro do SLA",
-        span: true,
       },
     ],
   },
