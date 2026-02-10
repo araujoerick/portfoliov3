@@ -3,9 +3,7 @@ import CodeTerminal from "./CodeTerminal";
 
 const TechIcon = ({ name, color }: { name: string; color: string }) => (
   <div className="flex flex-col items-center gap-2">
-    <div
-      className={`w-10 h-10 rounded-lg ${color} flex items-center justify-center`}
-    >
+    <div className={`w-10 h-10 ${color} flex items-center justify-center`}>
       <span className="text-white text-xs font-bold">
         {name.slice(0, 2).toUpperCase()}
       </span>
@@ -66,7 +64,7 @@ const HeroSection = () => {
             <div className="mt-8 flex flex-col min-[360px]:flex-row gap-3 justify-center lg:justify-start">
               <a
                 href="#projects"
-                className="group w-full min-[360px]:w-auto px-4 min-[360px]:px-6 py-3 bg-emerald-500 text-white font-medium rounded-full transition-all hover:scale-105 hover:shadow-lg cursor-pointer"
+                className="group w-full min-[360px]:w-auto px-4 min-[360px]:px-6 py-3 bg-emerald-500 text-white font-medium transition-all hover:scale-105 hover:shadow-lg cursor-pointer"
               >
                 <span className="flex items-center justify-center gap-2">
                   Ver Projetos
@@ -76,7 +74,7 @@ const HeroSection = () => {
               <a
                 href="/docs/ErickAraujoCV.pdf"
                 download="ErickAraujoCV.pdf"
-                className="group w-full min-[360px]:w-auto px-4 min-[360px]:px-6 py-3 rounded-full font-medium bg-linear-to-b from-neutral-900/80 to-neutral-900 border border-neutral-800/50 hover:border-neutral-700 backdrop-blur-sm transition-all hover:scale-105 cursor-pointer"
+                className="group w-full min-[360px]:w-auto px-4 min-[360px]:px-6 py-3 font-medium bg-linear-to-b from-neutral-900/80 to-neutral-900 border border-neutral-800/50 hover:border-neutral-700 backdrop-blur-sm transition-all hover:scale-105 cursor-pointer"
               >
                 <span className="flex items-center justify-center gap-2 text-neutral-300">
                   Baixar CV

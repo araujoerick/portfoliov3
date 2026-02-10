@@ -99,7 +99,7 @@ const stack = createDeveloperStack();`;
   return (
     <div className="w-full">
       <div className="relative group">
-        <div className="relative rounded-2xl overflow-hidden bg-linear-to-b from-neutral-900/60 via-neutral-900/40 to-neutral-900/30 border border-neutral-800/60 backdrop-blur-xl p-4 sm:p-6 hover:border-neutral-700/50 transition-all duration-500">
+        <div className="relative overflow-hidden bg-linear-to-b from-neutral-900/60 via-neutral-900/40 to-neutral-900/30 border border-neutral-800/60 backdrop-blur-xl p-4 sm:p-6 hover:border-neutral-700/50 transition-all duration-500">
           {/* Window Controls */}
           <div className="flex items-center justify-between mb-4">
             <div className="flex items-center gap-2">
@@ -116,7 +116,7 @@ const stack = createDeveloperStack();`;
           </div>
 
           {/* Code Content */}
-          <div className="bg-neutral-900/95 rounded-lg p-3 sm:p-4 h-75 sm:h-87.5 lg:h-100 overflow-y-auto scrollbar-hide">
+          <div className="bg-neutral-900/95 p-3 sm:p-4 h-75 sm:h-87.5 lg:h-100 overflow-y-auto scrollbar-hide">
             <pre className="text-xs font-mono leading-relaxed">
               <code
                 style={{
@@ -148,7 +148,7 @@ const stack = createDeveloperStack();`;
         </div>
 
         {/* Glow Effect */}
-        <div className="absolute -inset-0.5 bg-linear-to-r from-emerald-500/20 to-teal-500/20 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 -z-10" />
+        <div className="absolute -inset-0.5 bg-linear-to-r from-emerald-500/20 to-teal-500/20 blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 -z-10" />
       </div>
     </div>
   );

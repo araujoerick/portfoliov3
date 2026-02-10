@@ -98,7 +98,7 @@ const Footer = () => {
                   href={link.path}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-10 h-10 rounded-full bg-linear-to-b from-neutral-900/80 to-neutral-900 border border-neutral-800/50 flex items-center justify-center text-neutral-400 hover:text-white hover:border-neutral-700 transition-all"
+                  className="w-10 h-10 bg-linear-to-b from-neutral-900/80 to-neutral-900 border border-neutral-800/50 flex items-center justify-center text-neutral-400 hover:text-white hover:border-neutral-700 transition-all"
                 >
                   <link.Icon className="h-4 w-4" />
                 </a>
@@ -123,7 +123,7 @@ const Footer = () => {
                     rel="noopener noreferrer"
                     className="flex items-center gap-3 group"
                   >
-                    <div className="w-10 h-10 rounded-full bg-linear-to-b from-neutral-900/80 to-neutral-900 border border-neutral-800/50 flex items-center justify-center text-neutral-400 group-hover:text-emerald-400 group-hover:border-emerald-400 transition-all">
+                    <div className="w-10 h-10 bg-linear-to-b from-neutral-900/80 to-neutral-900 border border-neutral-800/50 flex items-center justify-center text-neutral-400 group-hover:text-emerald-400 group-hover:border-emerald-400 transition-all">
                       <link.Icon className="h-4 w-4" />
                     </div>
                     <span className="text-sm text-neutral-500 group-hover:text-emerald-400 transition-colors">

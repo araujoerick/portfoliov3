@@ -54,10 +54,10 @@ const AboutSection = () => {
 
         {/* Tab Buttons */}
         <div className="flex justify-center mb-12 px-4 sm:px-0">
-          <div className="flex w-full max-w-xs sm:w-auto sm:max-w-none sm:inline-flex p-1.5 bg-linear-to-b from-neutral-900/80 to-neutral-900 rounded-full border border-neutral-800/50 backdrop-blur-xl">
+          <div className="flex w-full max-w-xs sm:w-auto sm:max-w-none sm:inline-flex p-1.5 bg-linear-to-b from-neutral-900/80 to-neutral-900 border border-neutral-800/50 backdrop-blur-xl">
             <button
               onClick={() => setActiveTab("story")}
-              className={`flex-1 sm:flex-none px-6 py-3 sm:py-2.5 rounded-full text-sm font-medium transition-all cursor-pointer ${
+              className={`flex-1 sm:flex-none px-6 py-3 sm:py-2.5 text-sm font-medium transition-all cursor-pointer ${
                 activeTab === "story"
                   ? "bg-emerald-500 text-white shadow-lg"
                   : "text-neutral-400 hover:text-white"
@@ -67,7 +67,7 @@ const AboutSection = () => {
             </button>
             <button
               onClick={() => setActiveTab("skills")}
-              className={`flex-1 sm:flex-none px-6 py-3 sm:py-2.5 rounded-full text-sm font-medium transition-all cursor-pointer ${
+              className={`flex-1 sm:flex-none px-6 py-3 sm:py-2.5 text-sm font-medium transition-all cursor-pointer ${
                 activeTab === "skills"
                   ? "bg-emerald-500 text-white shadow-lg"
                   : "text-neutral-400 hover:text-white"
@@ -84,7 +84,7 @@ const AboutSection = () => {
             <div className="grid lg:grid-cols-2 gap-12 items-start">
               {/* Story Text */}
               <div className="space-y-6">
-                <div className="rounded-2xl bg-linear-to-b from-neutral-900/60 via-neutral-900/40 to-neutral-900/30 border border-neutral-800/60 backdrop-blur-xl p-8">
+                <div className="bg-linear-to-b from-neutral-900/60 via-neutral-900/40 to-neutral-900/30 border border-neutral-800/60 backdrop-blur-xl p-8">
                   <p className="text-xl text-neutral-300 font-light leading-relaxed mb-6">
                     Sou graduado em{" "}
                     <span className="text-white font-medium">
@@ -133,14 +133,14 @@ const AboutSection = () => {
                 {experiences.map((exp, index) => (
                   <div
                     key={index}
-                    className="group relative z-10 rounded-2xl bg-black border border-neutral-800/60 hover:border-neutral-700/50 transition-all duration-500"
+                    className="group relative z-10  bg-black border border-neutral-800/60 hover:border-neutral-700/50 transition-all duration-500"
                   >
-                    <div className="absolute inset-0 rounded-2xl bg-linear-to-b from-neutral-900/60 via-neutral-900/40 to-neutral-900/30 pointer-events-none" />
+                    <div className="absolute inset-0  bg-linear-to-b from-neutral-900/60 via-neutral-900/40 to-neutral-900/30 pointer-events-none" />
 
                     {/* Timeline Dot */}
                     {index > 0 && (
                       <div className="absolute left-1/2 -translate-x-1/2 -top-2 z-20">
-                        <div className="w-3 h-3 rounded-full bg-emerald-500 ring-4 ring-black group-hover:ring-emerald-500/20 transition-all duration-300" />
+                        <div className="w-3 h-3 bg-emerald-500 ring-4 ring-black group-hover:ring-emerald-500/20 transition-all duration-300" />
                       </div>
                     )}
 
@@ -151,7 +151,7 @@ const AboutSection = () => {
                             <span className="text-xs text-neutral-400 font-medium">
                               {exp.period}
                             </span>
-                            <div className="w-1 h-1 rounded-full bg-neutral-600" />
+                            <div className="w-1 h-1  bg-neutral-600" />
                             <span className="text-sm text-neutral-400">
                               {exp.role}
                             </span>
@@ -168,9 +168,7 @@ const AboutSection = () => {
                         {exp.achievements.map((achievement, achIndex) => (
                           <div
                             key={achIndex}
-                            className={`group/card relative rounded-lg p-3 border border-neutral-700/40 bg-neutral-800/30 hover:border-emerald-500/30 hover:bg-emerald-500/5 transition-all duration-300 ${
-                              achievement.span ? "col-span-2" : ""
-                            }`}
+                            className="group/card relative p-3 border border-neutral-700/40 bg-neutral-800/30 hover:border-emerald-500/30 hover:bg-emerald-500/5 transition-all duration-300"
                           >
                             <span className="text-xs text-neutral-400 leading-relaxed group-hover/card:text-neutral-300 transition-colors">
                               {achievement.text}
@@ -233,7 +231,7 @@ const AboutSection = () => {
                 return (
                   <div
                     key={category}
-                    className="rounded-2xl bg-linear-to-b from-neutral-900/60 via-neutral-900/40 to-neutral-900/30 border border-neutral-800/60 backdrop-blur-xl p-6"
+                    className="bg-linear-to-b from-neutral-900/60 via-neutral-900/40 to-neutral-900/30 border border-neutral-800/60 backdrop-blur-xl p-6"
                   >
                     <h3 className="text-lg font-semibold text-white mb-4">
                       {category}
@@ -242,7 +240,7 @@ const AboutSection = () => {
                       {skillList.map((skill) => (
                         <span
                           key={skill}
-                          className={`px-3 py-1.5 text-sm ${colors.bg} ${colors.text} rounded-lg border ${colors.border}`}
+                          className={`px-3 py-1.5 text-sm ${colors.bg} ${colors.text} border ${colors.border}`}
                         >
                           {skill}
                         </span>

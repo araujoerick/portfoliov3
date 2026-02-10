@@ -54,7 +54,7 @@ const PortfolioSection = () => {
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {projectsData.map((project, index) => (
             <div key={index} className="group relative cursor-pointer">
-              <div className="relative rounded-2xl overflow-hidden bg-linear-to-b from-neutral-900/60 via-neutral-900/40 to-neutral-900/30 border border-neutral-800/60 backdrop-blur-xl hover:border-neutral-700/50 transition-all duration-500 hover:transform hover:scale-[1.02]">
+              <div className="relative overflow-hidden bg-linear-to-b from-neutral-900/60 via-neutral-900/40 to-neutral-900/30 border border-neutral-800/60 backdrop-blur-xl hover:border-neutral-700/50 transition-all duration-500 hover:transform hover:scale-[1.02]">
                 {/* Project Image */}
                 <div className="relative h-56 overflow-hidden">
                   <Image
@@ -85,13 +85,13 @@ const PortfolioSection = () => {
                     {project.techs.slice(0, 3).map((tech, techIndex) => (
                       <span
                         key={techIndex}
-                        className="px-2.5 py-1 text-xs bg-neutral-800/50 text-neutral-400 rounded-md border border-neutral-700/50"
+                        className="px-2.5 py-1 text-xs bg-neutral-800/50 text-neutral-400 border border-neutral-700/50"
                       >
                         {tech}
                       </span>
                     ))}
                     {project.techs.length > 3 && (
-                      <span className="px-2.5 py-1 text-xs bg-emerald-900/20 text-emerald-400 rounded-md border border-emerald-700/50">
+                      <span className="px-2.5 py-1 text-xs bg-emerald-900/20 text-emerald-400 border border-emerald-700/50">
                         +{project.techs.length - 3}
                       </span>
                     )}
@@ -104,7 +104,7 @@ const PortfolioSection = () => {
                         href={project.githubUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex items-center gap-2 px-3 py-2 rounded-lg bg-neutral-800/50 text-neutral-300 hover:bg-neutral-800 hover:text-white transition-all text-sm"
+                        className="flex items-center gap-2 px-3 py-2 bg-neutral-800/50 text-neutral-300 hover:bg-neutral-800 hover:text-white transition-all text-sm"
                       >
                         <Github className="w-4 h-4" />
                         <span>Código</span>
@@ -115,7 +115,7 @@ const PortfolioSection = () => {
                         href={project.deployUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex items-center gap-2 px-3 py-2 rounded-lg bg-emerald-500 text-white hover:bg-emerald-600 transition-all text-sm"
+                        className="flex items-center gap-2 px-3 py-2 bg-emerald-500 text-white hover:bg-emerald-600 transition-all text-sm"
                       >
                         <ArrowUpRight className="w-4 h-4" />
                         <span>Demo</span>
@@ -125,7 +125,7 @@ const PortfolioSection = () => {
                 </div>
 
                 {/* Glow Effect */}
-                <div className="absolute -inset-0.5 bg-linear-to-r from-emerald-500 to-teal-500 rounded-2xl blur-xl opacity-0 group-hover:opacity-10 transition-opacity duration-500 -z-10" />
+                <div className="absolute -inset-0.5 bg-linear-to-r from-emerald-500 to-teal-500 blur-xl opacity-0 group-hover:opacity-10 transition-opacity duration-500 -z-10" />
               </div>
             </div>
           ))}
@@ -135,7 +135,7 @@ const PortfolioSection = () => {
         <div className="flex justify-center mt-12">
           <a
             href="mailto:araujoerick.dev@gmail.com"
-            className="group relative px-8 py-4 rounded-full bg-emerald-500 text-white font-medium transition-all hover:scale-105 hover:shadow-lg overflow-hidden cursor-pointer"
+            className="group relative px-8 py-4 bg-emerald-500 text-white font-medium transition-all hover:scale-105 hover:shadow-lg overflow-hidden cursor-pointer hover:border-b-white border-b-2 border-transparent"
           >
             <span className="relative z-10 flex items-center gap-2">
               Vamos conversar
