@@ -38,7 +38,7 @@ const HeroSection = () => {
           {/* Left Content */}
           <div className="space-y-6 md:space-y-8 text-center lg:text-left">
             <div>
-              <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold text-white mb-6">
+              <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold text-white mb-6 font-(family-name:--font-instrument-sans)">
                 Construindo aplicações modernas com performance e pixel perfect.
               </h1>
               <p className="text-xl sm:text-2xl text-neutral-400 mb-2">
