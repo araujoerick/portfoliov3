@@ -39,24 +39,19 @@ const HeroSection = () => {
           <div className="space-y-6 md:space-y-8 text-center lg:text-left">
             <div>
               <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold text-white mb-6 font-(family-name:--font-instrument-sans)">
-                Construindo aplicações modernas com performance e pixel perfect.
-              </h1>
-              <p className="text-xl sm:text-2xl text-neutral-400 mb-2">
-                Eu sou{" "}
                 <span className="text-emerald-500 font-semibold">
                   Erick Araujo
-                </span>
-                , Desenvolvedor Full Stack na{" "}
-                <span className="text-lime-500 font-semibold">
-                  Aditiva Soluções
-                </span>
-              </p>
-              <p className="text-lg text-neutral-500 mt-4">
-                Especializado em <span className="font-semibold">React</span>,{" "}
-                <span className="font-semibold">Next.js</span> e{" "}
-                <span className="font-semibold">NestJS</span> com foco em
-                aplicações <span className="font-semibold">Web3</span> e{" "}
-                <span className="font-semibold">microserviços</span>.
+                </span>{" "}
+                Desenvolvedor Full Stack
+              </h1>
+              <p className="text-xl sm:text-2xl text-neutral-400 mb-2">
+                Construindo aplicações modernas com{" "}
+                <span className="font-semibold">TypeScript</span>,{" "}
+                <span className="font-semibold">React</span>,{" "}
+                <span className="font-semibold">Next.js</span>,{" "}
+                <span className="font-semibold">Node</span> e{" "}
+                <span className="font-semibold">NestJS</span> sempre visando
+                performance e pixel perfect.
               </p>
             </div>
 
