@@ -12,18 +12,18 @@ const CodeTerminal = () => {
 
   const codeSnippet = `// Construindo aplicações modernas
 interface TechStack {
-  frontend: readonly string[];
-  backend: readonly string[];
-  web3: readonly string[];
-  tools: readonly string[];
+  frontend: string[];
+  backend: string[];
+  web3: string[];
+  tools: string[];
 }
 
-const createDeveloperStack = (): TechStack => ({
+const createDeveloperStack = () => ({
   frontend: ['React', 'Next.js', 'TypeScript', 'Tailwind'],
   backend: ['NestJS', 'Node.js', 'RabbitMQ', 'PostgreSQL'],
-  web3: ['Crypto_APIs', 'Wagmi', 'Ethers.js', 'Web3.js'],
+  web3: ['Crypto APIs', 'Wagmi', 'Ethers.js', 'Web3.js'],
   tools: ['Docker', 'Git', 'AWS', 'Vercel']
-});
+} as const);
 
 const stack = createDeveloperStack();`;
 
@@ -48,7 +48,8 @@ const stack = createDeveloperStack();`;
       const tokens: React.ReactElement[] = [];
       const keywords = ["interface", "const", "readonly", "string", "return"];
       const functions = ["TechStack", "createDeveloperStack", "stack"];
-      const parts = line.split(/(\s+|[{}()[\]:;,=>])/);
+      const parts =
+        line.match(/'[^']*'|\s+|[{}()[\]:;,=>]|[^\s{}()[\]:;,=>]+/g) || [];
 
       parts.forEach((part, idx) => {
         if (!part) return;
@@ -145,7 +146,7 @@ const stack = createDeveloperStack();`;
           </div>
 
           {/* Content Area */}
-          <div className="bg-neutral-900/95 p-4 h-75 sm:h-87.5 lg:h-100 overflow-hidden">
+          <div className="bg-neutral-900/95 p-4 h-115  lg:h-100 overflow-hidden">
             {activeTab === "techstack" ? (
               <pre className="text-xs font-mono leading-relaxed h-full overflow-y-auto scrollbar-hide">
                 <code style={{ color: "rgb(248, 248, 242)" }}>
@@ -186,6 +187,18 @@ const stack = createDeveloperStack();`;
 // Snake Game Wrapper Component
 const SnakeGameWrapper = () => {
   const [isPlaying, setIsPlaying] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+
+  // Detect screen size
+  React.useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
 
   // Handle space key to start game and prevent scrolling
   React.useEffect(() => {
@@ -204,15 +217,15 @@ const SnakeGameWrapper = () => {
 
   if (isPlaying) {
     return (
-      <div className="h-full w-full flex flex-col items-center justify-center gap-4 overflow-y-auto px-2">
+      <div className="flex flex-col gap-4">
         <button
           onClick={() => setIsPlaying(false)}
-          className="px-4 py-2 text-xs bg-neutral-800/50 text-neutral-400 border border-neutral-700/50 hover:bg-neutral-800 hover:text-white transition-all"
+          className="px-2 py-1 self-start text-xs text-neutral-400 hover:text-white transition-all"
         >
           ← Voltar
         </button>
         <div className="w-full flex justify-center">
-          <SnakeGame percentageWidth={70} startSnakeSize={4} />
+          <SnakeGame percentageWidth={isMobile ? 95 : 70} startSnakeSize={4} />
         </div>
       </div>
     );
