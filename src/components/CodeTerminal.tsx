@@ -98,11 +98,7 @@ const stack = createDeveloperStack();`;
           <div className="bg-neutral-800/80 px-3 py-2 flex items-center justify-between border-b border-neutral-700/50">
             <div className="flex items-center gap-2">
               {/* Linux Window Controls - Left Side */}
-              <div className="flex gap-1.5">
-                <button className="w-3 h-3 bg-red-500/90 hover:bg-red-500 transition-colors" />
-                <button className="w-3 h-3 bg-yellow-500/90 hover:bg-yellow-500 transition-colors" />
-                <button className="w-3 h-3 bg-green-500/90 hover:bg-green-500 transition-colors" />
-              </div>
+              &gt;_
             </div>
 
             {/* Center - Title */}
@@ -171,9 +167,7 @@ const stack = createDeveloperStack();`;
 
           {/* Footer */}
           <div className="bg-neutral-800/60 px-4 py-1.5 flex items-center justify-between text-xs text-neutral-400 border-t border-neutral-700/30">
-            <span>
-              {activeTab === "techstack" ? "TypeScript" : "JavaScript Game"}
-            </span>
+            <span>TypeScript</span>
             <span className="flex items-center gap-2">
               <div className="w-2 h-2 bg-emerald-400 animate-pulse" />
               <span className="hidden sm:inline">Full Stack Developer</span>
@@ -210,19 +204,16 @@ const SnakeGameWrapper = () => {
 
   if (isPlaying) {
     return (
-      <div className="h-full flex flex-col items-center justify-center gap-4 overflow-y-auto">
+      <div className="h-full w-full flex flex-col items-center justify-center gap-4 overflow-y-auto px-2">
         <button
           onClick={() => setIsPlaying(false)}
           className="px-4 py-2 text-xs bg-neutral-800/50 text-neutral-400 border border-neutral-700/50 hover:bg-neutral-800 hover:text-white transition-all"
         >
           ← Voltar
         </button>
-        <SnakeGame
-          percentageWidth={70}
-          startSnakeSize={4}
-          snakeColor="#84cc16"
-          appleColor="#ef4444"
-        />
+        <div className="w-full flex justify-center">
+          <SnakeGame percentageWidth={70} startSnakeSize={4} />
+        </div>
       </div>
     );
   }
@@ -231,9 +222,9 @@ const SnakeGameWrapper = () => {
     <div className="h-full flex items-center justify-center">
       <div className="text-center space-y-4">
         <div className="text-emerald-400 text-sm font-mono">
-          <pre className="text-xs leading-relaxed">
-            {`    _____ _   _          _  ________
-   / ____| \\ | |   /\\   | |/ /  ____|
+          <pre className="text-xs">
+            {`        _____ _   _          _  ________
+       / ____| \\ | |   /\\   | |/ /  ____|
   | (___ |  \\| |  /  \\  | ' /| |__
    \\___ \\| . \` | / /\\ \\ |  < |  __|
    ____) | |\\  |/ ____ \\| . \\| |____
@@ -243,9 +234,12 @@ const SnakeGameWrapper = () => {
           </pre>
         </div>
         <div className="space-y-2 text-neutral-400 text-xs font-mono">
-          <p>🎮 Use Arrow Keys to Move</p>
-          <p>🍎 Eat food to grow</p>
-          <p>💀 Don&apos;t hit the walls or yourself!</p>
+          <p>
+            🎮 Use <span className="text-emerald-400">W S A D</span> or{" "}
+            <span className="text-emerald-400">Arrow Keys</span> to Move
+          </p>
+          <p>🍎 Eat some food to grow</p>
+          <p>💀 Don&apos;t hit yourself!</p>
           <div className="mt-4 pt-4 border-t border-neutral-700/50">
             <button
               onClick={() => setIsPlaying(true)}
