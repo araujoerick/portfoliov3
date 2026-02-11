@@ -5,6 +5,7 @@ import {
   GameDimensions,
   SnakePart,
 } from "@/types/snake-game";
+import { getHighScore, saveHighScore } from "@/utils/snake-game-storage";
 
 interface UseSnakeGameOptions {
   percentageWidth?: number;
@@ -43,7 +44,7 @@ export const useSnakeGame = ({
     initialAppleColor || APPLE_COLOR,
   );
   const [score, setScore] = useState(0);
-  const [highScore, setHighScore] = useState(0);
+  const [highScore, setHighScore] = useState(() => getHighScore());
   const [newHighScore, setNewHighScore] = useState(false);
 
   const directionRef = useRef(direction);
@@ -271,6 +272,7 @@ export const useSnakeGame = ({
           setHighScore((prevHighScore) => {
             if (newScore > prevHighScore) {
               setNewHighScore(true);
+              saveHighScore(newScore);
               return newScore;
             }
             return prevHighScore;
