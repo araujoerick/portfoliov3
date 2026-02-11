@@ -1,7 +1,15 @@
 "use client";
 
 import { useState } from "react";
-import { ArrowUpRight } from "lucide-react";
+import {
+  ArrowUpRight,
+  Monitor,
+  Server,
+  Database,
+  Cloud,
+  Link2,
+  Palette,
+} from "lucide-react";
 import { experiences, skills } from "@/data/about-data";
 
 const AboutSection = () => {
@@ -184,41 +192,60 @@ const AboutSection = () => {
           )}
 
           {activeTab === "skills" && (
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 pt-1">
               {Object.entries(skills).map(([category, skillList]) => {
                 const colorMap: Record<
                   string,
-                  { bg: string; text: string; border: string }
+                  {
+                    bg: string;
+                    text: string;
+                    border: string;
+                    hover: string;
+                    icon: React.ReactNode;
+                  }
                 > = {
                   Frontend: {
                     bg: "bg-emerald-500/10",
                     text: "text-emerald-400",
                     border: "border-emerald-500/20",
+                    hover:
+                      "hover:border-emerald-500/50 hover:bg-emerald-500/20",
+                    icon: <Monitor className="w-5 h-5" />,
                   },
                   Backend: {
                     bg: "bg-cyan-500/10",
                     text: "text-cyan-400",
                     border: "border-cyan-500/20",
+                    hover: "hover:border-cyan-500/50 hover:bg-cyan-500/20",
+                    icon: <Server className="w-5 h-5" />,
                   },
                   "Banco de Dados": {
                     bg: "bg-purple-500/10",
                     text: "text-purple-400",
                     border: "border-purple-500/20",
+                    hover: "hover:border-purple-500/50 hover:bg-purple-500/20",
+                    icon: <Database className="w-5 h-5" />,
                   },
                   "DevOps & Cloud": {
                     bg: "bg-orange-500/10",
                     text: "text-orange-400",
                     border: "border-orange-500/20",
+                    hover: "hover:border-orange-500/50 hover:bg-orange-500/20",
+                    icon: <Cloud className="w-5 h-5" />,
                   },
                   "Web3 & Blockchain": {
                     bg: "bg-blue-500/10",
                     text: "text-blue-400",
                     border: "border-blue-500/20",
+                    hover: "hover:border-blue-500/50 hover:bg-blue-500/20",
+                    icon: <Link2 className="w-5 h-5" />,
                   },
                   "Testes & Design": {
                     bg: "bg-lime-500/10",
                     text: "text-lime-400",
                     border: "border-lime-500/20",
+                    hover: "hover:border-lime-500/50 hover:bg-lime-500/20",
+                    icon: <Palette className="w-5 h-5" />,
                   },
                 };
 
@@ -226,21 +253,30 @@ const AboutSection = () => {
                   bg: "bg-neutral-500/10",
                   text: "text-neutral-400",
                   border: "border-neutral-500/20",
+                  hover: "hover:border-neutral-500/50 hover:bg-neutral-500/20",
+                  icon: <Monitor className="w-5 h-5" />,
                 };
 
                 return (
                   <div
                     key={category}
-                    className="bg-linear-to-b from-neutral-900/60 via-neutral-900/40 to-neutral-900/30 border border-neutral-800/60 backdrop-blur-xl p-6"
+                    className="group/card bg-linear-to-b from-neutral-900/60 via-neutral-900/40 to-neutral-900/30 border border-neutral-800/60 backdrop-blur-xl p-6 hover:border-neutral-700/80 hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
                   >
-                    <h3 className="text-lg font-semibold text-white mb-4">
-                      {category}
-                    </h3>
+                    <div className="flex items-center gap-3 mb-4">
+                      <div
+                        className={`${colors.text} transition-transform duration-300 group-hover/card:scale-110 group-hover/card:rotate-6`}
+                      >
+                        {colors.icon}
+                      </div>
+                      <h3 className="text-lg font-semibold text-white group-hover/card:text-transparent group-hover/card:bg-linear-to-r group-hover/card:from-emerald-400 group-hover/card:to-teal-400 group-hover/card:bg-clip-text transition-all">
+                        {category}
+                      </h3>
+                    </div>
                     <div className="flex flex-wrap gap-2">
                       {skillList.map((skill) => (
                         <span
                           key={skill}
-                          className={`px-3 py-1.5 text-sm ${colors.bg} ${colors.text} border ${colors.border}`}
+                          className={`px-3 py-1.5 text-sm ${colors.bg} ${colors.text} border ${colors.border} ${colors.hover} transition-all duration-200 hover:scale-105 hover:shadow-lg cursor-default`}
                         >
                           {skill}
                         </span>
