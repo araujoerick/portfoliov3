@@ -12,10 +12,11 @@ const TOP_ENTRIES_COUNT = 10;
 export async function GET() {
   try {
     // Get top entries from sorted set
-    const entries = await redis.zrange(
+    const entries = await redis.zrange<string[]>(
       "snake-leaderboard",
       0,
       TOP_ENTRIES_COUNT - 1,
+      { rev: true },
     );
 
     if (!entries || entries.length === 0) {
@@ -30,7 +31,10 @@ export async function GET() {
 
     // Parse entries
     const parsedEntries = entries.map((entry) => {
-      return JSON.parse(entry as string) as LeaderboardEntry;
+      if (typeof entry === "string") {
+        return JSON.parse(entry) as LeaderboardEntry;
+      }
+      return entry as LeaderboardEntry;
     });
 
     return NextResponse.json(

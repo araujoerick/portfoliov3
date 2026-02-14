@@ -103,30 +103,28 @@ export async function POST(request: NextRequest) {
       timestamp: Date.now(),
     };
 
-    // Using negative score for descending order in Redis
     await redis.zadd("snake-leaderboard", {
-      score: -score,
+      score: score,
       member: JSON.stringify(entry),
     });
 
     // Keep only top 100 entries to save space
-    await redis.zremrangebyrank("snake-leaderboard", 100, -1);
+    await redis.zremrangebyrank("snake-leaderboard", 0, -101);
 
     // Get player rank
-    const allEntries = await redis.zrange("snake-leaderboard", 0, -1);
-    const rank =
-      allEntries.findIndex((e) => {
-        const parsed = JSON.parse(e as string) as LeaderboardEntry;
-        return parsed.id === entry.id;
-      }) + 1;
+    const rank = await redis.zrevrank(
+      "snake-leaderboard",
+      JSON.stringify(entry),
+    );
+    const playerRank = rank !== null ? rank + 1 : 0;
 
-    const isTopScore = rank === 1;
+    const isTopScore = playerRank === 1;
 
     return NextResponse.json(
       {
         success: true,
         message: isTopScore ? "New high score!" : "Score submitted!",
-        rank,
+        rank: playerRank,
         isTopScore,
       },
       { status: 200 },
