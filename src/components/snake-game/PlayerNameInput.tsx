@@ -29,7 +29,7 @@ export const PlayerNameInput: React.FC<PlayerNameInputProps> = ({
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (name.length >= 1 && name.length <= 3 && !isSubmitting) {
+    if (name.length >= 1 && name.length <= 10 && !isSubmitting) {
       onSubmit(name);
     }
   };
@@ -42,7 +42,7 @@ export const PlayerNameInput: React.FC<PlayerNameInputProps> = ({
 
   return (
     <form onSubmit={handleSubmit} className="flex flex-col items-center gap-4">
-      <div className="text-center font-bold font-mono" style={{ fontSize }}>
+      <div className="text-center font-mono font-bold" style={{ fontSize }}>
         ENTER YOUR NAME
       </div>
 
@@ -54,7 +54,7 @@ export const PlayerNameInput: React.FC<PlayerNameInputProps> = ({
           onChange={handleChange}
           onKeyDown={handleKeyDown}
           maxLength={10}
-          className="w-64 px-4 py-2 text-center font-mono font-bold text-2xl tracking-wider uppercase bg-black/50 border-2 border-lime-400 text-lime-400 focus:outline-none focus:border-lime-300 focus:ring-2 focus:ring-lime-400/50"
+          className="w-64 border-2 border-lime-400 bg-black/50 px-4 py-2 text-center font-mono text-2xl font-bold tracking-wider text-lime-400 uppercase focus:border-lime-300 focus:ring-2 focus:ring-lime-400/50 focus:outline-none"
           placeholder="YOURNAME"
           disabled={isSubmitting}
           autoComplete="off"
@@ -63,7 +63,7 @@ export const PlayerNameInput: React.FC<PlayerNameInputProps> = ({
       </div>
 
       <div
-        className="text-center text-gray-400 font-mono"
+        className="text-center font-mono text-gray-400"
         style={{ fontSize: fontSize * 0.6 }}
       >
         1-10 letters or numbers
@@ -72,14 +72,14 @@ export const PlayerNameInput: React.FC<PlayerNameInputProps> = ({
       <button
         type="submit"
         disabled={name.length < 1 || isSubmitting}
-        className="px-6 py-2 font-mono font-bold bg-lime-400 text-black hover:bg-lime-300 disabled:bg-gray-600 disabled:text-gray-400 disabled:cursor-not-allowed transition-colors"
+        className="bg-lime-400 px-6 py-2 font-mono font-bold text-black transition-colors hover:bg-lime-300 disabled:cursor-not-allowed disabled:bg-gray-600 disabled:text-gray-400"
         style={{ fontSize: fontSize * 0.8 }}
       >
         {isSubmitting ? "SUBMITTING..." : "SUBMIT"}
       </button>
 
       <div
-        className="hidden md:block text-center text-gray-400 font-mono animate-pulse"
+        className="hidden animate-pulse text-center font-mono text-gray-400 md:block"
         style={{ fontSize: fontSize * 0.6 }}
       >
         Press ENTER to submit
