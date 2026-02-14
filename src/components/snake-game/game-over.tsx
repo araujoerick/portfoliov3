@@ -4,7 +4,6 @@ import Leaderboard from "./Leaderboard";
 
 interface GameOverProps {
   width: number;
-  height: number;
   score: number;
   highScore: number;
   newHighScore: boolean;
@@ -13,16 +12,16 @@ interface GameOverProps {
 
 export const GameOver: React.FC<GameOverProps> = ({
   width,
-  height,
   score,
   highScore,
   newHighScore,
   onRestart,
 }) => {
-  const [showNameInput, setShowNameInput] = useState(true);
+  const [currentScreen, setCurrentScreen] = useState<
+    "nameInput" | "leaderboard"
+  >("nameInput");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitMessage, setSubmitMessage] = useState<string | null>(null);
-  const [showLeaderboard, setShowLeaderboard] = useState(false);
 
   const handleSubmitScore = async (playerName: string) => {
     setIsSubmitting(true);
@@ -48,8 +47,10 @@ export const GameOver: React.FC<GameOverProps> = ({
             ? `🏆 NEW #1 HIGH SCORE! 🏆`
             : `Score submitted! Rank: #${data.rank}`,
         );
-        setShowNameInput(false);
-        setShowLeaderboard(true);
+        // Wait a moment to show the success message before transitioning
+        setTimeout(() => {
+          setCurrentScreen("leaderboard");
+        }, 1500);
       } else {
         setSubmitMessage(`Error: ${data.message}`);
       }
@@ -62,70 +63,76 @@ export const GameOver: React.FC<GameOverProps> = ({
   };
 
   const handleSkip = () => {
-    setShowNameInput(false);
-    setShowLeaderboard(true);
+    setCurrentScreen("leaderboard");
   };
 
-  return (
-    <div className="pb-12 flex flex-col items-center gap-6">
-      <div
-        id="GameBoard"
-        className="relative mx-auto outline outline-lime-400"
-        style={{
-          width: width,
-          height: height,
-          outlineWidth: width / 50,
-        }}
-      >
-        <div
-          className="flex h-full flex-col justify-around text-center px-4"
-          style={{ fontSize: width / 15 }}
-        >
-          <div className="font-bold text-red-600">GAME OVER</div>
-          <div>Your score: {score}</div>
-          <div>
-            {newHighScore ? "New h" : "H"}igh score: {highScore}
-          </div>
-          <div className="hidden animate-pulse font-bold text-white md:inline-block">
-            Press Space to restart
-          </div>
-          <button
-            onClick={onRestart}
-            className="animate-pulse px-4 py-2 font-bold text-white md:hidden"
+  // First screen: Name input
+  if (currentScreen === "nameInput") {
+    return (
+      <div className="flex flex-col items-center gap-6 pt-4 pb-8">
+        <div className="flex flex-col items-center gap-3 text-center">
+          <div
+            className="font-mono font-bold text-red-600"
+            style={{ fontSize: width / 14 }}
           >
-            Press to restart
-          </button>
+            GAME OVER
+          </div>
+          <div className="font-mono" style={{ fontSize: width / 20 }}>
+            Your score: <span className="font-bold text-lime-400">{score}</span>
+          </div>
+          <div className="font-mono" style={{ fontSize: width / 22 }}>
+            {newHighScore ? (
+              <span className="animate-pulse font-bold text-yellow-400">
+                🏆 New High Score: {highScore} 🏆
+              </span>
+            ) : (
+              <span className="text-gray-400">High score: {highScore}</span>
+            )}
+          </div>
         </div>
+
+        {submitMessage ? (
+          <div
+            className="animate-pulse text-center font-mono font-bold text-lime-400"
+            style={{ fontSize: width / 20 }}
+          >
+            {submitMessage}
+          </div>
+        ) : (
+          <div className="flex flex-col items-center gap-3">
+            <PlayerNameInput
+              onSubmit={handleSubmitScore}
+              isSubmitting={isSubmitting}
+              fontSize={width / 22}
+            />
+            <button
+              onClick={handleSkip}
+              className="font-mono text-xs text-gray-400 underline transition-colors hover:text-gray-300"
+            >
+              Skip and view leaderboard
+            </button>
+          </div>
+        )}
+      </div>
+    );
+  }
+
+  // Second screen: Leaderboard with play again
+  return (
+    <div className="flex flex-col items-center gap-2 pt-7 pb-4">
+      <Leaderboard fontSize={width / 28} width={width * 0.9} />
+      <div className="text-center font-mono" style={{ fontSize: width / 24 }}>
+        Your score: <span className="font-bold text-lime-400">{score}</span>
       </div>
 
-      {showNameInput && !submitMessage && (
-        <div className="flex flex-col items-center gap-4">
-          <PlayerNameInput
-            onSubmit={handleSubmitScore}
-            isSubmitting={isSubmitting}
-            fontSize={width / 20}
-          />
-          <button
-            onClick={handleSkip}
-            className="font-mono text-sm text-gray-400 hover:text-gray-300 underline"
-          >
-            Skip
-          </button>
-        </div>
-      )}
-
-      {submitMessage && (
-        <div
-          className="font-mono font-bold text-center text-lime-400 animate-pulse"
-          style={{ fontSize: width / 20 }}
+      <div className="flex flex-col items-center gap-2">
+        <button
+          onClick={onRestart}
+          className="border border-emerald-500/50 bg-emerald-500/20 px-4 py-2 text-emerald-400 transition-all hover:bg-emerald-500/30"
         >
-          {submitMessage}
-        </div>
-      )}
-
-      {showLeaderboard && (
-        <Leaderboard fontSize={width / 25} width={width * 0.9} />
-      )}
+          Press SPACE to Restart
+        </button>
+      </div>
     </div>
   );
 };

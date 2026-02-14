@@ -15,8 +15,8 @@ interface SnakeGameProps {
 }
 
 export const SnakeGame: React.FC<SnakeGameProps> = ({
-  percentageWidth = 40,
-  startSnakeSize = 6,
+  percentageWidth = 70,
+  startSnakeSize = 4,
   snakeColor,
   appleColor,
 }) => {
@@ -46,7 +46,6 @@ export const SnakeGame: React.FC<SnakeGameProps> = ({
     return (
       <GameOver
         width={dimensions.width}
-        height={dimensions.height}
         highScore={highScore}
         newHighScore={newHighScore}
         score={score}
@@ -56,7 +55,7 @@ export const SnakeGame: React.FC<SnakeGameProps> = ({
   }
 
   return (
-    <div className="w-full flex flex-col items-center gap-4">
+    <div className="flex w-full flex-col items-center gap-4 pt-10">
       <GameBoard
         dimensions={dimensions}
         snake={snake}
