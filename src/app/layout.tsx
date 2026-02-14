@@ -19,6 +19,9 @@ const instrumentSans = Instrument_Sans({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(
+    process.env.NEXT_PUBLIC_SITE_URL || "https://araujo-portfolio.vercel.app"
+  ),
   title: "Erick Araujo | Desenvolvedor Full Stack",
   description:
     "Desenvolvedor Full Stack com foco em React, Next.js e NestJS com TypeScript. Especializado em aplicações Web3, microserviços e interfaces Pixel Perfect com alta performance.",
